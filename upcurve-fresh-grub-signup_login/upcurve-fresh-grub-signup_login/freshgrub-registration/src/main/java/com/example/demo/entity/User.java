@@ -4,27 +4,20 @@ package com.example.demo.entity;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import com.mongodb.lang.NonNull;
-
 import jakarta.persistence.Entity;
 
 
 @Entity
-@Document(collection  = "users")
+@Document(collection = "users")
 public class User {
 	
 	@Id
 	private String _id;
-	@NonNull
 	private String firstName;
 	private String lastName;
-	@NonNull
 	private String email;
-	@NonNull
 	private long mobileNumber;
-	@NonNull
 	private String password;
-	@NonNull
 	private String role;
 	private String vendorID;
 	
@@ -32,7 +25,6 @@ public class User {
 	public String get_id() {
 		return _id;
 	}
-
 	public void setId(String _id) {
 		this._id = _id;
 	}
