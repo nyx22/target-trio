@@ -25,14 +25,14 @@ public class UserImpl implements UserService{
 	public String addUser(UserDTO userDto) {
 		
 		User user = new User(
-				userDto.getId(),
+				userDto.get_id(),
 				userDto.getFirstName(),
 				userDto.getLastName(),
 				userDto.getEmail(),
 				userDto.getMobileNumber(),
 				this.passwordEncoder.encode(userDto.getPassword()),
 				userDto.getRole(),
-				userDto.getVendorID()
+				userDto.getVendorId()
 				
 		);
 		
@@ -43,7 +43,6 @@ public class UserImpl implements UserService{
 
 	@Override
 	public LoginResponse loginUser(LoginDTO loginDto) {
-		String msg = "";
 		User user1 = userRepo.findByEmail(loginDto.getEmail());
 		if(user1 != null) {
 			String password = loginDto.getPassword();
@@ -52,7 +51,7 @@ public class UserImpl implements UserService{
 			if(isPwdRight) {
 				Optional<User> user = userRepo.findOneByEmailAndPassword(loginDto.getEmail(), encodedPassword);
 				if(user.isPresent()) {
-					return new LoginResponse( "Login Success ",true, user1.getRole());
+					return new LoginResponse( "Login Success",true, user1.getRole());
 				}else {
 					return new LoginResponse("Login Failed" , false, user1.getRole());
 				}
