@@ -1,1 +1,0 @@
-# upcurve-fresh-grub
